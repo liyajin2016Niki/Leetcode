@@ -29,4 +29,5 @@ public class InsertSort {
             System.out.println(i);
         }
     }
+
 }
