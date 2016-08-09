@@ -1,5 +1,7 @@
 package important.binaryTree;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -82,6 +84,31 @@ public class Traverse {
         }
     }
 
+    public int height(TreeNode root){
+        if(root == null) return 0;
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+        return (leftHeight > rightHeight) ? leftHeight + 1: rightHeight + 1;
+    }
+
+    public void levelTraverse(TreeNode root){
+        if(root == null) return;
+        int num = 1;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while(!queue.isEmpty()){
+            while(num-- > 0){
+                root = queue.poll();
+                System.out.print(root.val + " ");
+                if(root.left != null) queue.offer(root.left);
+                if(root.right != null) queue.offer(root.right);
+            }
+            num = queue.size();
+            System.out.println();
+        }
+    }
+
 
     public static void main(String[] args) {
         TreeNode node1 = new TreeNode(1);
@@ -123,5 +150,14 @@ public class Traverse {
         System.out.println("后序遍历(循环实现):");
         traverse.postTraverse1(node1);
         System.out.println();
+
+
+        System.out.println("树高");
+        System.out.println(traverse.height(node1));
+
+        System.out.println("层次遍历(循环实现):");
+        traverse.levelTraverse(node1);
+        System.out.println();
+
     }
 }
