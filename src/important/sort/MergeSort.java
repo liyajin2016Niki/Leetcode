@@ -4,7 +4,6 @@ package important.sort;
  * 分而治之的思想,对一个数组进行排序,先把这个数组分成两边,分别对左边和右边进行排序,然后合并
  * 稳定的排序,空间复杂度O(n),时间复杂度O(nlogn),最好最坏情况都是O(nlogn)
  *
- * Created by liyajin on 16/8/4.
  * Created by liyajin on 16/8/9.
  */
 public class MergeSort {
